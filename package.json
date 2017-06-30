@@ -1,0 +1,31 @@
+{
+  "name": "devtest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vinmugambi/devtest.git"
+  },
+  "keywords": [
+    "csv",
+    "sqlite",
+    "nodejs",
+    "command-line",
+    "ActiveMQ"
+  ],
+  "author": "Mugambi_Vin@twitter.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vinmugambi/devtest/issues"
+  },
+  "homepage": "https://github.com/vinmugambi/devtest#readme",
+  "dependencies": {
+    "chalk": "^2.0.1",
+    "sqlite3": "^3.1.8",
+    "stompit": "^0.25.0"
+  }
+}
