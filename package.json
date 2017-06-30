@@ -25,6 +25,9 @@
   "homepage": "https://github.com/vinmugambi/devtest#readme",
   "dependencies": {
     "chalk": "^2.0.1",
+    "clear": "0.0.1",
+    "inquirer": "^3.1.1",
+    "minimist": "^1.2.0",
     "sqlite3": "^3.1.8",
     "stompit": "^0.25.0"
   }
