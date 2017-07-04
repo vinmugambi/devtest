@@ -6,7 +6,7 @@ var fs = require("fs");
 var dbpath = path.join(__dirname, "db", "devtest.db");
 var db = new sqlite3.Database(dbpath, (err) => {
     if (err) console.log(chalk.red(err));
-    else console.log(chalk.green("DB devtest created successfully at "), chalk.blue(dbpath));
+    else console.log(chalk.green("DB devtest created successfully at "), chalk.bgYellow(dbpath));
 });
 var csvFile;
 if (process.argv[2] !== null && typeof (process.argv[2]) === "string") {
@@ -15,7 +15,7 @@ if (process.argv[2] !== null && typeof (process.argv[2]) === "string") {
     csvFile = path.join(__dirname, "dummy_delimited.csv");
 }
 
-var csvData =fs.readFileSync(csvFile,"utf8");
+var csvData = fs.readFileSync(csvFile, "utf8");
 
 var csvToJSON = () => {
     var lines = csvData.split("\n");
@@ -38,7 +38,7 @@ var AMPQEntries = csvToJSON().filter(row => row.five == !"C" || row.five == !"G"
 db.serialize(function () {
     db.run('DROP TABLE IF EXISTS csvEntries')
     db.run(`CREATE TABLE csvEntries(
-      one text default "A" NOT NULL,
+      one text default,
       two text,
       three text,
       four text,
@@ -50,18 +50,22 @@ db.serialize(function () {
       ten text,
       eleven text,
       twelve text
-  )`);
+  )`, (err) => {
+            if (err) console.log(err)
+            else console.log("sucessfuly created table")
+        });
+    var stmt = db.prepare("INSERT INTO csvEntries VALUES (?,?,?,?,?,?,?,?,?,?,?)", function (err) {
+        if (err) console.log(err)
+        else console.log("prepared for insertion")
+    });
+    dbEntries.forEach(function (element) {
+        stmt.run([this.one, this.two, this.three, this.four, this.five, this.six, this.seven, this.eight, this.nine, this.ten, this.eleven, this.twelve])
+    }, this);
+    stmt.finalize()
 
-
-    // var stmt = db.prepare("INSERT INTO csvEntries VALUES (?)");
-    // for (var i = 0; i < 10; i++) {
-    //     stmt.run("Ipsum " + i);
-    // }
-    // stmt.finalize();
-
-    // db.each("SELECT rowid AS id, info FROM lorem", function (err, row) {
-    //     console.log(row.id + ": " + row.info);
-    // });
+    db.each("SELECT * FROM csvEntries", function (err, row) {
+        console.log(row)
+    })
 });
 
 db.close();
