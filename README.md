@@ -73,7 +73,7 @@ npm install
 In case you are using Ubuntu and the above command logs errors. Check whether you have latest versions of g++ and gcc installed on your machine.
 
 ## Running 
-The application is made up of two scripts. The script named `insert.js` ; reads data from a given csv file and insert it into activeMQ or sqlite. The one named `query.js`; reads data from both activeMQ and sqlite and inserts into separate csv file that will be located in a folder named output after running the scripts.
+The application is made up of two scripts. The script named `insert.js` ; reads data from a given csv file and insert it into activeMQ or sqlite. The one named `query.js`; reads data from both activeMQ and sqlite. It then creates two files namely `fromDb.csv`and `fromActiveMQ` where it writes data from sqlite and activeMQ respectively.
 The scripts are executed as follows.
 
 
