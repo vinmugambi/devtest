@@ -59,20 +59,6 @@ function readAMQ() {
             console.log('Unable to connect: ' + error.message);
             return;
         }
-        // client.subscribe({ "destination": "/queue/dev", "ack": "client-individual" }, (err, message) => {
-        //     if (err) console.log(chalk.red("Subcription failed " + err.message));
-        //     else { 
-        //         for(let i=0; i<80; i++){
-        //              message.readString("utf-8", function (err, body) {
-        //             if (err) console.log(chalk.red("Message read failed" + err.message));
-        //             else {
-        //                 console.log(body)
-        //                 client.ack(message);
-        //                 sleep(100)
-        //             }
-        //         })
-        //     }
-        // client.disconnect();
         var consuming = false;
 
         client.subscribe({ "destination": "/queue/dev", "ack": "client-individual" }, function (error, message) {
