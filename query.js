@@ -59,7 +59,6 @@ function readAMQ() {
             console.log('Unable to connect: ' + error.message);
             return;
         }
-        var consuming = false;
 
         client.subscribe({ "destination": "/queue/dev", "ack": "client-individual" }, function (error, message) {
             if (error) {
