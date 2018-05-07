@@ -51,6 +51,10 @@ file. You may use ActiveMQ libraries to perform the exercise.
 The csv file has 12 columns. Each column is separated by a pipe character “|” and each column can
 
 contain any of the following values “A”,”G”,”C”,”T”
+
+
+
+# Solution
 ## Prerequisites
 
 activeMQ version 5.14 or later,nodejs and npm.
@@ -64,7 +68,7 @@ git clone https://github.com/vinmugambi/devtest
 cd devtest
 ```
 
-Then install the dependencies by giving the following command in the cmd
+Then install the dependencies by giving the following command in the cmd/terminal
 
 ```cmd/bash
 npm install
@@ -73,7 +77,7 @@ npm install
 In case you are using Ubuntu and the above command logs errors. Check whether you have latest versions of g++ and gcc installed on your machine.
 
 ## Running 
-The application is made up of two scripts. The script named `insert.js` ; reads data from a given csv file and insert it into activeMQ or sqlite. The one named `query.js`; reads data from both activeMQ and sqlite. It then creates two files namely `fromDb.csv`and `fromActiveMQ` where it writes data from sqlite and activeMQ respectively.
+The application is made up of two scripts. The script named `insert.js` ; reads data from a given csv file and inserts it into activeMQ and sqlite. The one named `query.js`; reads data from both activeMQ and sqlite. It then creates two files namely `fromDb.csv`and `fromActiveMQ.csv` where it writes data from sqlite and activeMQ respectively.
 The scripts are executed as follows.
 
 
@@ -85,5 +89,5 @@ node query
 Incase no argument is given as `csv_file_name` when running the insert script, the csv file located on the root (dummy_delimited.csv) is sorted instead.
 
 ## note
-The query script will result into an error in case it is run before running the insert script. The second command will create a folder named `output` on the root folder and two csv files inside it.
+The query script will result into an error in case it is run before running the insert script. The `node query` command will create a folder named `output` in the root of the application; it will contain the `fromDb.csv` and `fromActiveMQ.csv` files.
 
